@@ -18,7 +18,7 @@ Lattice algorithms are highly susceptible to precision errors. In the LLL algori
 
 This architecture tracks two distinct mathematical states:
 1. **The Lattice Basis (B):** Resides strictly in the integer domain. All size reductions and swaps are applied directly to these integer coordinates.
-2. **The GSO State (B* and μ):** Evaluated strictly in the rational domain. When b_k = b_k - q * b_j, we execute an O(1) update to the coefficients. When the Lovász condition fails, the local orthogonality is fractured, and the GSO state is deterministically recomputed from the fractured index onward.
+2. **The GSO State (B and μ):** Evaluated strictly in the rational domain. When b_k = b_k - q * b_j, we execute an O(1) update to the coefficients. When the Lovász condition fails, the local orthogonality is fractured, and the GSO state is deterministically recomputed from the fractured index onward.
 
 ### The Lovász Condition
 The algorithm tests whether swapping two adjacent basis vectors improves the quality of the basis using the adjustable parameter delta (default is 3/4):
