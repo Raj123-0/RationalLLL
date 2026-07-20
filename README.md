@@ -30,6 +30,6 @@ The algorithm tests whether swapping two adjacent basis vectors improves the qua
 Clone the repository and run the standalone script. No external dependencies (like NumPy or SciPy) are required.
 
 ```bash
-git clone [https://github.com/Raj123-0/RationalLLL.git](https://github.com/Raj123-0/RationalLLL.git)
+git clone https://github.com/Raj123-0/RationalLLL.git
 cd RationalLLL
 python lll.py
