@@ -1,5 +1,8 @@
-from lll import LLLAlgorithm
+"""Module for mathematical computation and analysis."""
+
 from fractions import Fraction
+
+from lll import LLLAlgorithm
 
 print("Initializing LLL Reduction...")
 
