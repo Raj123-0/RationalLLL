@@ -1,6 +1,8 @@
-import math
+"""Module for mathematical computation and analysis."""
+
 from fractions import Fraction
 from typing import List, Tuple
+import math
 
 Vector = List[int]
 RationalVector = List[Fraction]
@@ -9,21 +11,55 @@ RationalMatrix = List[RationalVector]
 
 
 def rational_round(q: Fraction) -> int:
+    """Rational round.
+    
+    Args:
+        q:
+    
+    Returns:
+        int: Result of type int
+    
+    """
     return int(math.floor(q + Fraction(1, 2)))
 
 
 class VectorMath:
     @staticmethod
     def dot_product(v1: RationalVector, v2: RationalVector) -> Fraction:
+        """Dot product.
+        
+        Args:
+            v1:
+            v2:
+        
+        Returns:
+            The computed result
+        
+        """
         return sum((x * y for x, y in zip(v1, v2)), Fraction(0))
 
     @staticmethod
     def norm_sq(v: RationalVector) -> Fraction:
+        """Norm sq.
+        
+        Args:
+            v:
+        
+        Returns:
+            The computed result
+        
+        """
         return VectorMath.dot_product(v, v)
 
 
 class GramSchmidtManager:
     def __init__(self, basis: Matrix):
+        """Init.
+        
+        Args:
+            basis (list):
+        
+        """
         self.n = len(basis)
         self.m = len(basis[0]) if self.n > 0 else 0
         
@@ -35,6 +71,13 @@ class GramSchmidtManager:
         self.recompute_from(0, basis)
 
     def recompute_from(self, start_idx: int, basis: Matrix) -> None:
+        """Recompute from.
+        
+        Args:
+            start_idx:
+            basis:
+        
+        """
         for i in range(start_idx, self.n):
             b_i_star = [Fraction(x) for x in basis[i]]
             
@@ -54,11 +97,24 @@ class GramSchmidtManager:
 
 class LLLAlgorithm:
     def __init__(self, basis: Matrix, delta: Fraction = Fraction(3, 4)):
+        """Init.
+        
+        Args:
+            basis:
+            delta:
+        
+        """
         self.basis = [list(row) for row in basis]
         self.delta = delta
         self.gso = GramSchmidtManager(self.basis)
 
     def reduce(self) -> Matrix:
+        """Reduce.
+        
+        Returns:
+            The computed result
+        
+        """
         k = 1
         n = len(self.basis)
 
@@ -90,6 +146,9 @@ class LLLAlgorithm:
 
 
 def test_lll_edge_cases():
+    """Check whether lll edge cases.
+    
+    """
     print("Running defensive mathematical audits...")
 
     skewed_basis = [
@@ -118,6 +177,16 @@ def test_lll_edge_cases():
 
 
 def solve_subset_sum(weights: List[int], target: int) -> List[int]:
+    """Solve subset sum.
+    
+    Args:
+        weights (list):
+        target:
+    
+    Returns:
+        list: Result of type list
+    
+    """
     n = len(weights)
     N = int(math.ceil(math.sqrt(n))) * 1000 
     
